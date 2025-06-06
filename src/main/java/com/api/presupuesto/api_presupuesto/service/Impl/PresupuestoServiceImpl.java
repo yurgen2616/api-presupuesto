@@ -17,34 +17,24 @@ public class PresupuestoServiceImpl implements PresupuestoService{
     private PresupuestoRepository repository;
 
     @Override
-    public Presupuesto save(Presupuesto presupuesto){
+    public Presupuesto save(Presupuesto presupuesto) {
         return repository.save(presupuesto);
     }
 
     @Override
-    public List<Presupuesto> findAll(){
+    public List<Presupuesto> findAll() {
         return repository.findAll();
     }
 
     @Override
-    public Presupuesto findById(Long id){
-        return repository.findById(id).orElseThrow(()-> new PresupuestoNoEncontradoException(id));
+    public Presupuesto findById(Long id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new PresupuestoNoEncontradoException(id));
     }
 
     @Override
-    public Presupuesto update(Long id, Presupuesto presupuestoActualizado){
-        Presupuesto existing = findById(id);
-        existing.setNombre(presupuestoActualizado.getNombre());
-        existing.setFecha(presupuestoActualizado.getFecha());
-        existing.setMontoTotal(presupuestoActualizado.getMontoTotal());
-        existing.setEstado(presupuestoActualizado.getEstado());
-        return repository.save(existing);
-    }
-
-    @Override
-    public void delete(Long id){
+    public void delete(Long id) {
         Presupuesto presupuesto = findById(id);
         repository.delete(presupuesto);
     }
-
 }
