@@ -10,11 +10,9 @@ import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
 @Data
-public class PresupuestoDTO {
+public class PresupuestoUpdateDTO {
 
-    private Long id;
-
-    @NotBlank(message = "El nombre es obligatorio")
+@NotBlank(message = "El nombre es obligatorio")
     private String nombre;
 
     @NotNull(message = "La fecha es obligatoria")
