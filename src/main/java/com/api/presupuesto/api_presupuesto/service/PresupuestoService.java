@@ -8,7 +8,6 @@ public interface PresupuestoService {
     Presupuesto save(Presupuesto presupuesto);
     List<Presupuesto> findAll();
     Presupuesto findById(Long id);
-    Presupuesto update(Long id, Presupuesto presupuesto);
     void delete(Long id);
 
 }
