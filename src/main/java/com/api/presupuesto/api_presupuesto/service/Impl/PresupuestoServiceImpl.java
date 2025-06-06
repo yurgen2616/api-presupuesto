@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.api.presupuesto.api_presupuesto.exception.PresupuestoNoEncontradoException;
 import com.api.presupuesto.api_presupuesto.model.Presupuesto;
 import com.api.presupuesto.api_presupuesto.repository.PresupuestoRepository;
 import com.api.presupuesto.api_presupuesto.service.PresupuestoService;
@@ -27,8 +28,7 @@ public class PresupuestoServiceImpl implements PresupuestoService{
 
     @Override
     public Presupuesto findById(Long id){
-        return repository.findById(id)
-            .orElseThrow(()-> new RuntimeException("Presupuesto no encontrado con ID:" + id));
+        return repository.findById(id).orElseThrow(()-> new PresupuestoNoEncontradoException(id));
     }
 
     @Override
